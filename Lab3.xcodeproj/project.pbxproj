@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B803042B29CF48601E3B4E3 /* Pods_Lab3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA81517FDA1B635AE90069AE /* Pods_Lab3.framework */; };
+		946544331CA2C8FB00123A4F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946544321CA2C8FB00123A4F /* ChatViewController.swift */; };
 		94EE38DC1CA2C07C00FA3FBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EE38DB1CA2C07C00FA3FBD /* AppDelegate.swift */; };
 		94EE38DE1CA2C07C00FA3FBD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EE38DD1CA2C07C00FA3FBD /* LoginViewController.swift */; };
 		94EE38E11CA2C07C00FA3FBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94EE38DF1CA2C07C00FA3FBD /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		11639574ECF18492F5A22A1C /* Pods-Lab3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lab3.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lab3/Pods-Lab3.debug.xcconfig"; sourceTree = "<group>"; };
+		946544321CA2C8FB00123A4F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		94EE38D81CA2C07C00FA3FBD /* Lab3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lab3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94EE38DB1CA2C07C00FA3FBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		94EE38DD1CA2C07C00FA3FBD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			children = (
 				94EE38DB1CA2C07C00FA3FBD /* AppDelegate.swift */,
 				94EE38DD1CA2C07C00FA3FBD /* LoginViewController.swift */,
+				946544321CA2C8FB00123A4F /* ChatViewController.swift */,
 				94EE38DF1CA2C07C00FA3FBD /* Main.storyboard */,
 				94EE38E21CA2C07C00FA3FBD /* Assets.xcassets */,
 				94EE38E41CA2C07C00FA3FBD /* LaunchScreen.storyboard */,
@@ -212,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				94EE38DE1CA2C07C00FA3FBD /* LoginViewController.swift in Sources */,
+				946544331CA2C8FB00123A4F /* ChatViewController.swift in Sources */,
 				94EE38DC1CA2C07C00FA3FBD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

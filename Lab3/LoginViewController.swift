@@ -38,7 +38,12 @@ class LoginViewController: UIViewController {
                 let errorString = error.userInfo["error"] as? NSString
                 self.showMessage(errorString as! String)
             } else {
-                self.showMessage("SignUp Success!")
+                print("Sign up success")
+                let chatVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ChatViewController")
+                self.presentViewController(chatVC, animated: true, completion: {
+                    //
+                })
+                
             }
         }
     }
@@ -47,7 +52,11 @@ class LoginViewController: UIViewController {
         PFUser.logInWithUsernameInBackground(lblEmail.text! , password:lblPassword.text!) {
             (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
-                self.showMessage("LogIn Success!")
+                print("Log in success")
+                let chatVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ChatViewController")
+                self.presentViewController(chatVC, animated: true, completion: {
+                    //
+                })
             } else {
                 self.showMessage("Fail!")
             }
