@@ -14,7 +14,7 @@ class ChatViewController: UIViewController {
     @IBOutlet weak var tbvChat: UITableView!
     @IBOutlet weak var chatInputField: UITextField!
     
-    var chatDatas = [PFObject]?
+    var chatDatas: [PFObject]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +22,10 @@ class ChatViewController: UIViewController {
         tbvChat.rowHeight = UITableViewAutomaticDimension
         
         tbvChat.delegate = self
-        tbvChat.dataSource =self
+        tbvChat.dataSource = self
         
         
-        NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "onTimer", userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(ChatViewController.onTimer), userInfo: nil, repeats: true)
 
     }
 
@@ -38,6 +38,10 @@ class ChatViewController: UIViewController {
         let messageObject = PFObject(className: "Message_Swift_032016")
         messageObject["text"] = chatInputField.text!
         messageObject["user"] = PFUser.currentUser()?.username
+        
+        print(messageObject["text"])
+        print(messageObject["user"])
+        
         messageObject.saveInBackgroundWithBlock { (success: Bool, err: NSError?) in
             if success {
                 print("Send message success")
@@ -48,16 +52,15 @@ class ChatViewController: UIViewController {
         }
     }
 
-    func onTimer{
-        var query = PFQuery(className:"Message_Swift_032016")
-//        query.whereKey("text", equalTo:"Sean Plott")
+    func onTimer () {
+        let query = PFQuery(className:"Message_Swift_032016")
+        query.orderByDescending("createdAt")
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             
             if error == nil {
                 // The find succeeded.
                 print("Successfully retrieved \(objects!.count) scores.")
-                // Do something with the found objects
                 if let objects = objects {
                     self.chatDatas = objects
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -73,13 +76,16 @@ class ChatViewController: UIViewController {
 
 }
 //MARK: - ExtensionTableView
-extension BusinessesViewController: UITableViewDelegate, UITableViewDataSource{
+extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
     //tableViewDatasource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chatDatas?.count ?? 0
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCellWithIdentifier("ChatCell") as! ChatCell
+        cell.lblMessage.text = self.chatDatas![indexPath.row]["text"] as? String
+        cell.lblUserName.text = self.chatDatas![indexPath.row]["user"] as? String
+        return cell
     }
     //tableViewDelegate
 }
