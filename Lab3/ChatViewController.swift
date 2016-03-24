@@ -25,7 +25,7 @@ class ChatViewController: UIViewController {
         tbvChat.dataSource = self
         
         
-        NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(ChatViewController.onTimer), userInfo: nil, repeats: true)
+        NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector:"onTimer", userInfo: nil, repeats: true)
 
     }
 
@@ -37,10 +37,9 @@ class ChatViewController: UIViewController {
     @IBAction func onSend(sender: AnyObject) {
         let messageObject = PFObject(className: "Message_Swift_032016")
         messageObject["text"] = chatInputField.text!
-        messageObject["user"] = PFUser.currentUser()?.username
+        messageObject["username"] = PFUser.currentUser()?.username
         
-        print(messageObject["text"])
-        print(messageObject["user"])
+
         
         messageObject.saveInBackgroundWithBlock { (success: Bool, err: NSError?) in
             if success {
@@ -84,7 +83,7 @@ extension ChatViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ChatCell") as! ChatCell
         cell.lblMessage.text = self.chatDatas![indexPath.row]["text"] as? String
-        cell.lblUserName.text = self.chatDatas![indexPath.row]["user"] as? String
+        cell.lblUserName.text = self.chatDatas![indexPath.row]["username"] as? String
         return cell
     }
     //tableViewDelegate
